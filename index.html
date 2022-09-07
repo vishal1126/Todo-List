@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks-Daily</title>
+    <style>
+
+        *{
+            margin: 0%;
+            padding: 0%;
+
+            box-sizing: border-box;
+
+        }
+
+
+        body{
+                font-family:Arial, Helvetica, sans-serif;
+                background: #F7F7F7;
+        }
+
+
+            #header-div{
+                    display: inline-flex;
+                    margin: 0;
+                    width: 100%;
+                    height: 100%;
+                    padding: 30px 55px;
+                    background-color: white;
+                    font-size: x-large;
+                    box-shadow: 0px 3px 30px #7B7B7B29;             
+            }
+
+
+            #head1{
+                color:black ;
+            }
+
+            #head1:hover{
+                transform: scale(0.9);
+                transition-duration: 1s;
+            }
+
+            #head2{
+                color: #4caf50;
+                padding-left: 5px;
+                
+            }
+            #head2:hover{
+                transform: scale(0.9);
+                transition-duration: 1s;
+            }
+
+
+            #main-div{
+                background-color: #F7F7F7;
+                
+            }
+
+            #bdiv{
+                
+                    position: absolute;
+                    right: 5%;
+                    top: 15%;
+                    margin-top: 50px;
+
+
+            }
+            .box:hover{
+
+                box-shadow: 1px 1px 15px 1px black;
+            }
+
+
+            #b1{
+                font-size: xx-large;
+                height: 50px;
+                width: 50px;
+                border: none;
+                color: white;
+                border-radius:50%;
+                background-color: #4caf50;
+                margin-right: 10px;
+            }
+
+
+            #b2{
+                height: 40px;
+                border: none;
+                width: auto;
+                font-size: xx-large;
+
+                background-color: white   ;
+            }
+
+
+            #box-div{
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 140px;  
+                margin-left:  10%;
+  
+            }
+            .box{
+                    height: 250px;
+                    width: 300px;
+                    border-radius: 5px;
+                    background-color: white;
+                    margin: 2%;
+                    padding: 2%;
+            }
+            .box h2{
+                color: #4caf50;
+                padding: 10px;
+            }
+            .box h4{
+                color: #424242;
+            }
+
+            input[type="checkbox"]:checked + label{
+        text-decoration: line-through;
+        color: #c2c2c2;
+      }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div id="header-div">
+            <h1 id="head1">Tasks </h1>
+            <h1 id="head2"> Daily</h1>
+        </div>
+    </header>
+
+
+    <div id="main-div">
+        <div id="bdiv">
+            <button id="b1" onclick="add()">+</button>
+            <button id="b2"  onclick="add()">Add Task</button>
+        </div>
+        <div id="box-div"></div>
+    </div>
+    <script>
+        function add(){
+            var boxd=document.getElementById("box-div");
+            var box=document.createElement("div");
+           
+            box.className="box";
+           
+            var heading= String(prompt("ENTER THE HEADING"));
+            var items=Number(prompt("ENTER NUMBER OF ITEMS (ONLY NUMBER)"))
+            var arr=new Array();
+           
+            for(var i=0;i<items;i++){
+                arr[i]=prompt("ENTER "+(i+1)+" ELEMENT");
+            }
+            
+            box.innerHTML+=`<h2>${heading}</h2>`;
+            for(var i=0;i<items;i++){
+                    box.innerHTML+=`<h4>
+                        <input type="checkbox" onclick="check(id${i},label${i})" id="id${i}">
+                        <label for="id${i}" id="label${i}">${arr[i]}</label>    
+                        </h4>`
+            }
+                boxd.appendChild(box);
+        }
+       
+        
+    </script>
+</body>
+
+</html>
